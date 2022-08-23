@@ -47,6 +47,8 @@ class ReminderListFragment : Fragment() {
         observeViewModel()
     }
 
+    //@={reminder.title} u layoutu , = (jednako) predstavlja two way data binding u isto virjeme je listener reminder updtadesa i prima promjene
+
     fun observeViewModel(){
         viewModel.reminderLD.observe(viewLifecycleOwner, Observer {
             reminderListAdapter.updateReminderList(it)

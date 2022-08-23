@@ -7,4 +7,6 @@
     <string name="enterTitle">Unesi naziv</string>
     <string name="enterDescription">Unesi opis</string>
     <string name="addReminder">Dodaj</string>
+    <string name="editTitle">Uredi</string>
+    <string name="saveChanges">Spremi</string>
 </resources>

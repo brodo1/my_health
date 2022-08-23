@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.example.my_health.model.Reminder
 import com.example.my_health.model.ReminderDataBase
-import com.example.my_health.util.buildDB
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -23,14 +23,16 @@ class ReminderListViewModel(application: Application):AndroidViewModel(applicati
 
     fun refresh(){
         launch {
-            val db= buildDB(getApplication())
+            val db=ReminderDataBase.getDataBase(getApplication())
+            //val db= buildDB(getApplication())
             reminderLD.value=db.reminderDao().selectAllReminders()
         }//kad se pozove refresh fja live data se updejta
     }
 
     fun clearReminder(reminder: Reminder){
         launch {
-            val db= buildDB(getApplication())
+            //val db= buildDB(getApplication())
+            val db=ReminderDataBase.getDataBase(getApplication())
             db.reminderDao().deleteReminder(reminder)
             reminderLD.value=db.reminderDao().selectAllReminders()
         }

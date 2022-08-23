@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.example.my_health.model.Reminder
 import com.example.my_health.model.ReminderDataBase
-import com.example.my_health.util.buildDB
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,10 +17,10 @@ class DetailsReminderViewModel(application: Application):AndroidViewModel(applic
    private var job= Job()
     val reminderLD = MutableLiveData<Reminder>()
 
-    fun fetch(uuid:Int){
+    fun grab(uuid:Int){
 
         launch {
-            val db= buildDB(getApplication())
+            val db= ReminderDataBase.getDataBase(getApplication())
             reminderLD.value=db.reminderDao().selectReminder(uuid)
         }
     }
@@ -30,14 +30,18 @@ class DetailsReminderViewModel(application: Application):AndroidViewModel(applic
 
     fun addReminder(list: List<Reminder>){
         launch {
-            val db= buildDB(getApplication())
-           db.reminderDao().insertAll(*list.toTypedArray()) //*list prebacuje elemente liste u pojedinacne reminder objekte i tako se ubacuje vise parametara odjednom
+            //val db= buildDB(getApplication())
+            val db= ReminderDataBase.getDataBase(getApplication())
+            db.reminderDao().insertAll(*list.toTypedArray()) //*list prebacuje elemente liste u pojedinacne reminder objekte i tako se ubacuje vise parametara odjednom
+
+
         }
     }
 
     fun update(title:String,description:String,uuid: Int){
         launch {
-            val db= buildDB(getApplication())
+            val db= ReminderDataBase.getDataBase(getApplication())
+            //val db= buildDB(getApplication())
             db.reminderDao().update(title,description,uuid)
         }
     }

@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/fragment_create_reminder_list.xml" value="0.25" />
+        <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/fragment_create_reminder_list.xml" value="0.1" />
+        <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/fragment_edit_reminder_list.xml" value="0.1" />
         <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/fragment_reminder_list.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/fagit/Desktop/my_health2/app/src/main/res/layout/reminder_item_layout.xml" value="0.5" />
       </map>

@@ -5,8 +5,14 @@
 
     <data>
         <variable
-            name="reminder"
+            name="Reminder"
             type="com.example.my_health.model.Reminder" />
+        <variable
+            name="editlistener"
+            type="com.example.my_health.util.ReminderEditClickListener" />
+        <variable
+            name="deletelistener"
+            type="com.example.my_health.util.ReminderDeleteClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,7 +34,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
 
-                android:text="@{"
+                android:text="@{Reminder.title}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toStartOf="@+id/imgUpdateReminder"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +82,7 @@
                 android:layout_marginTop="8dp"
                 android:paddingTop="10dp"
                 android:layout_marginEnd="8dp"
-                android:text="Opis"
+                android:text="@{Reminder.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/uputnicaTitle" />
@@ -88,6 +94,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:tag="@{Reminder.uuid}"
+                android:onClick="@{editlistener::onReminderEditClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/uputnicaTitle"
                 app:layout_constraintTop_toTopOf="parent"
@@ -100,6 +108,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:onClick="@{()->deletelistener.onReminderDeleteClick(Reminder)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/uputnicaOpis"
