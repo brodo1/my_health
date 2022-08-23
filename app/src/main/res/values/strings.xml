@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">my_health</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty">Add new reminder</string>
+    <string name="newremind">Nova uputnica</string>
+    <string name="enterTitle">Unesi naziv</string>
+    <string name="enterDescription">Unesi opis</string>
+    <string name="addReminder">Dodaj</string>
+</resources>
