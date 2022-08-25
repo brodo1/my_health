@@ -9,4 +9,9 @@
     <string name="addReminder">Dodaj</string>
     <string name="editTitle">Uredi</string>
     <string name="saveChanges">Spremi</string>
+    <string name="odaberi_datum">Odaberi datum</string>
+    <string name="odaberi_vrijeme">Odaberi vrijeme</string>
+    <string name="reminder_notification_channel_id" translatable="false">reminder_channel</string>
+    <string name="reminder_notification_channel_name" translatable="true">Reminder</string>
+    <string name="reminder_notification_channel_description">User reminder</string>
 </resources>

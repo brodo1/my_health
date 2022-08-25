@@ -18,7 +18,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#D3D3D3"
+        >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +38,7 @@
 
                 android:text="@{Reminder.title}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@+id/imgUpdateReminder"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,18 +60,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="datum"
+                    android:text="@{Reminder.date}"
 
 
+                    android:textColor="#676666"
                     tools:text="Datum" />
 
                 <TextView
                     android:id="@+id/uputnicaVrijeme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="vrijeme"
                     android:layout_marginLeft="14dp"
+                    android:text="@{Reminder.time}"
 
+                    android:textColor="#676666"
                     tools:text="Vrijeme" />
 
             </LinearLayout>
@@ -77,15 +82,17 @@
                 android:id="@+id/uputnicaOpis"
                 style="@style/Widget.AppCompat.TextView"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:paddingTop="10dp"
                 android:layout_marginEnd="8dp"
+                android:paddingTop="10dp"
                 android:text="@{Reminder.description}"
+                android:textColor="#676666"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/uputnicaTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/uputnicaTitle"
+                tools:text="Opis" />
 
             <ImageView
                 android:id="@+id/imgUpdateReminder"
@@ -94,8 +101,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:tag="@{Reminder.uuid}"
+                android:foregroundTint="#FFFFFF"
                 android:onClick="@{editlistener::onReminderEditClick}"
+                android:tag="@{Reminder.uuid}"
+                app:tint="#673AB7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/uputnicaTitle"
                 app:layout_constraintTop_toTopOf="parent"
@@ -109,6 +118,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{()->deletelistener.onReminderDeleteClick(Reminder)}"
+                app:tint="#673AB7"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/uputnicaOpis"

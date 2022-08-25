@@ -10,16 +10,33 @@
         <variable
             name="listener"
             type="com.example.my_health.util.ButtonAddReminderClickListener" />
+        <variable
+            name="listener_date"
+            type="com.example.my_health.util.DateClickListener" />
+        <variable
+            name="listener_time"
+            type="com.example.my_health.util.TimeClickListener" />
+
     </data>
+
+
+
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.CreateReminderListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/txtViewTitle"
@@ -51,47 +68,98 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtTitle"
-                android:text="@={reminder.title}"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="55dp" />
+                android:layout_height="wrap_content"
+                android:text="@={reminder.title}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            android:layout_marginEnd="24dp"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtDescription"
-                android:text="@={reminder.description}"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="101dp"
-                android:hint="@string/enterDescription" />
+                android:layout_height="wrap_content"
+                android:hint="@string/enterDescription"
+                android:text="@={reminder.description}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnAdd"
-            android:onClick="@{listener::onButtonAddReminder}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="24dp"
+            android:onClick="@{listener::onButtonAddReminder}"
             android:text="@string/addReminder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtLayoutVrijeme" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputDatum"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            app:endIconDrawable="@drawable/ic_baseline_calendar_today_24"
+            app:endIconMode="custom"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:onClick="@{listener_date::onDateClick}"
+                android:text="@={reminder.date}"
+                android:id="@+id/txtDatum"
+                android:enabled="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/odaberi_datum" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtLayoutVrijeme"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconDrawable="@drawable/ic_baseline_access_time_24"
+            app:endIconMode="custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtInputDatum">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:onClick="@{listener_time::onTimeClick}"
+                android:text="@={reminder.time}"
+                android:id="@+id/txtVrijeme"
+                android:enabled="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/odaberi_vrijeme" />
+        </com.google.android.material.textfield.TextInputLayout>
         <!-- databinding,.. :: ide jer se ne koriste parametri , to je za lamba funkcije -->
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 </FrameLayout>
 
 </layout>

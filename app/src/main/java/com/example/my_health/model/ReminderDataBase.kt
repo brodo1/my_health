@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Reminder::class), version = 2)
+@Database(entities = arrayOf(Reminder::class), version = 5)
 abstract class ReminderDataBase:RoomDatabase() {
     abstract fun reminderDao(): ReminderDao //pristup dao funkcijama
 

@@ -38,11 +38,11 @@ class DetailsReminderViewModel(application: Application):AndroidViewModel(applic
         }
     }
 
-    fun update(title:String,description:String,uuid: Int){
+    fun update(title:String,description:String,uuid: Int,date:String,time:String,workRequestID:String){
         launch {
             val db= ReminderDataBase.getDataBase(getApplication())
             //val db= buildDB(getApplication())
-            db.reminderDao().update(title,description,uuid)
+            db.reminderDao().update(title,description,uuid,date,time,workRequestID)
         }
     }
 

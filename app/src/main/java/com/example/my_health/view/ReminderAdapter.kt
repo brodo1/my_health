@@ -61,7 +61,7 @@ ReminderDeleteClickListener,ReminderEditClickListener{
         Navigation.findNavController(v).navigate(action)
     }
 
-    override fun onReminderDeleteClick(reminder: Reminder) {
+    override fun onReminderDeleteClick(reminder: Reminder) { //u item layoutu
         adapterOnClick(reminder) //onClick je gore definiran kao labmda funckija, u reminderListFragmentu je implementirana ta funckija kao doClick
     }
 }

@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/createReminderListFragment"
         android:name="com.example.my_health.view.CreateReminderListFragment"
-        android:label="fragment_create_reminder_list"
+        android:label="Dodaj uputnicu"
         tools:layout="@layout/fragment_create_reminder_list" />
     <fragment
         android:id="@+id/reminderListFragment"
         android:name="com.example.my_health.view.ReminderListFragment"
-        android:label="fragment_reminder_list"
-        tools:layout="@layout/fragment_reminder_list" >
+        android:label="Uputnice"
+        tools:layout="@layout/fragment_reminder_list">
         <action
             android:id="@+id/actionCreateRemind"
             app:destination="@id/createReminderListFragment"
@@ -27,9 +27,19 @@
     <fragment
         android:id="@+id/editReminderFragment"
         android:name="com.example.my_health.view.EditReminderFragment"
-        android:label="EditReminderFragment" >
+        android:label="Uredi">
         <argument
             android:name="uuid"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/secerFragment"
+        android:name="com.example.my_health.view.SecerFragment"
+        android:label="fragment_secer"
+        tools:layout="@layout/fragment_secer" />
+    <fragment
+        android:id="@+id/tlakFragment"
+        android:name="com.example.my_health.view.TlakFragment"
+        android:label="fragment_tlak"
+        tools:layout="@layout/fragment_tlak" />
 </navigation>

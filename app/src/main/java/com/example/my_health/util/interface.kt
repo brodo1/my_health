@@ -19,3 +19,12 @@ interface ReminderSaveChangesListener{
 interface ButtonAddReminderClickListener{
     fun onButtonAddReminder(v:View)
 }
+
+interface DateClickListener{
+    fun onDateClick(v:View)
+}
+
+interface TimeClickListener{
+    fun onTimeClick(v:View)
+}
+
