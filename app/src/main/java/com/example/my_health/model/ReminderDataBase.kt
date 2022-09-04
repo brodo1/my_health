@@ -5,13 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Reminder::class), version = 5)
+@Database(entities = arrayOf(Reminder::class,Tlak::class,Secer::class), version = 8,exportSchema = false)
 abstract class ReminderDataBase:RoomDatabase() {
-    abstract fun reminderDao(): ReminderDao //pristup dao funkcijama
+    abstract fun reminderDao(): ReminderDao
+    abstract fun tlakDao():TlakDao
+    abstract fun secerDao():SecerDao
 
     companion object{
-        @Volatile private var INSTANCE: ReminderDataBase ?= null //volatile moze se koristit s drugim thredovima
-        private val LOCK=Any() //osigurava da postoji samo jedna instanca baze
+        @Volatile private var INSTANCE: ReminderDataBase ?= null
 
         fun getDataBase(context: Context): ReminderDataBase {
             synchronized(this){

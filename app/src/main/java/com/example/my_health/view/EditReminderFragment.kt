@@ -24,10 +24,7 @@ import com.example.my_health.databinding.FragmentEditReminderListBinding
 import com.example.my_health.model.Reminder
 import com.example.my_health.util.*
 import com.example.my_health.viewmodel.DetailsReminderViewModel
-import kotlinx.android.synthetic.main.fragment_create_reminder_list.*
-import kotlinx.android.synthetic.main.fragment_create_reminder_list.txtDescription
-import kotlinx.android.synthetic.main.fragment_create_reminder_list.txtTitle
-import kotlinx.android.synthetic.main.fragment_edit_reminder_list.*
+
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -58,18 +55,9 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
         super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this).get(DetailsReminderViewModel::class.java)
 
-        val uuid=EditReminderFragmentArgs.fromBundle(requireArguments()).uuid //u edit fragment u nav grafu se uveo argument uuid i ovako se uzme uuid od tog remindera
-        viewModel.grab(uuid)  //reminderLD iz viewmodela postaje reminder uuid reminder
-        /*
-        btnAdd.setOnClickListener {
-            viewModel.update(
-                txtTitle.text.toString(),
-                txtDescription.text.toString(),
-                uuid)
-            Navigation.findNavController(it).popBackStack()
-        }
+        val uuid=EditReminderFragmentArgs.fromBundle(requireArguments()).uuid
+        viewModel.grab(uuid)
 
-         */
         dataBinding.listener=this
         dataBinding.listenerDate=this
         dataBinding.listenerTime=this
@@ -79,12 +67,10 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
 
     fun observeViewModel(){
         viewModel.reminderLD.observe(viewLifecycleOwner, Observer {
-            dataBinding.reminder=it //reminder u layoutu postaje reminderLD
+            dataBinding.reminder=it
             dataBinding.reminder!!.date=""
             dataBinding.reminder!!.time=""
-            dataBinding.reminder!!.description=""
-       // txtTitle.setText(it.title) //uzme od remindera odabranog sa grab naslov i description
-         //   txtDescription.setText(it.description)
+
         })
     }
 
@@ -99,9 +85,6 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
             val today=Calendar.getInstance()
             calendar.set(year, month, day, hour, minute)
 
-            //dijeli se sa 1000 da se prebaci u sekunde, L long
-            //pretpostavlja se da se odabire datum u buducnosti
-            //razlika u sekundama se postavlja kao vrijeme koje mora proci da se trigera notifikacija -setinitialdelay
             val razlika = (calendar.timeInMillis / 1000L) - (today.timeInMillis / 1000L)
             Log.d(
                 "picked time",
@@ -111,17 +94,31 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
                 .setInitialDelay(razlika, TimeUnit.SECONDS)
                 .setInputData(
                     workDataOf(
-                        "title" to txtTitleEdit.text.toString(),
-                        "message" to txtDescriptionEdit.text.toString()
+                        "title" to dataBinding.txtTitleEdit.text.toString(),
+                        "message" to dataBinding.txtDescriptionEdit.text.toString()
                     )
                 )
-                .build() // u reminderWorker klasi pristupa se input.data i ovdje se postavlja taj input
+                .build()
             val workrequestId = myWorkRequest.id.toString()
             reminder.workRequestID= workrequestId
             WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
         }
-        viewModel.update(reminder.title,reminder.description,reminder.uuid,reminder.date,reminder.time,reminder.workRequestID)
-        Navigation.findNavController(v).popBackStack()
+        if(dataBinding.reminder!!.title.length>0) {
+            viewModel.update(
+                reminder.title,
+                reminder.description,
+                reminder.uuid,
+                reminder.date,
+                reminder.time,
+                reminder.workRequestID
+            )
+            Navigation.findNavController(v).popBackStack()
+        }
+        else{
+            Toast.makeText(context,"Unesi naziv!",Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
 
@@ -142,7 +139,7 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
         val calendar= Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY,hour)
         calendar.set(Calendar.MINUTE,minute)
-        if(calendar.timeInMillis>=System.currentTimeMillis()) {
+
             dataBinding.txtVrijeme.setText(
                 hour.toString().padStart(2, '0')
                         + ":" + minute.toString().padStart(2, '0')
@@ -150,10 +147,7 @@ class EditReminderFragment : Fragment(), ReminderSaveChangesListener, DateClickL
             this.hour = hour
             this.minute = minute
 
-        }
-        else{
-            Toast.makeText(context,"Neispravno vrijeme!",Toast.LENGTH_LONG).show()
-        }
+
     }
 
 

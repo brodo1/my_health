@@ -4,9 +4,10 @@
     <item android:title="Podsjetnik"
         android:id="@+id/reminderListFragment"
         />
-    <item android:title="Šećer"
-        android:id="@+id/secerFragment"
-        />
     <item android:title="Tlak"
-        android:id="@+id/tlakFragment"/>
+        android:id="@+id/tlakFragment"
+        />
+    <item android:title="Šećer"
+        android:id="@+id/secerFragment"/>
+
 </menu>

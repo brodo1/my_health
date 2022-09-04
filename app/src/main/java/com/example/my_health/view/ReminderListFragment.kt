@@ -1,6 +1,7 @@
 package com.example.my_health.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,9 @@ import com.example.my_health.databinding.FragmentEditReminderListBinding
 import com.example.my_health.databinding.FragmentReminderListBinding
 import com.example.my_health.model.Reminder
 import com.example.my_health.viewmodel.ReminderListViewModel
-import kotlinx.android.synthetic.main.fragment_reminder_list.*
+import com.jjoe64.graphview.series.DataPoint
+
+//import kotlinx.android.synthetic.main.fragment_reminder_list.*
 
 
 class ReminderListFragment : Fragment() {
@@ -27,6 +30,7 @@ class ReminderListFragment : Fragment() {
     fun doClick(item:Any){
         viewModel.clearReminder(item as Reminder)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +58,6 @@ class ReminderListFragment : Fragment() {
         observeViewModel()
     }
 
-    //@={reminder.title} u layoutu , = (jednako) predstavlja two way data binding u isto virjeme je listener reminder updtadesa i prima promjene
 
     fun observeViewModel(){
         viewModel.reminderLD.observe(viewLifecycleOwner, Observer {

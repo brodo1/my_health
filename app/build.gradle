@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    //id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -41,7 +41,7 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
 
     def room_version = "2.4.3"
-
+    implementation 'com.jjoe64:graphview:4.2.2'
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"

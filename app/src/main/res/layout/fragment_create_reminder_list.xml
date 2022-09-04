@@ -9,7 +9,7 @@
             type="com.example.my_health.model.Reminder" />
         <variable
             name="listener"
-            type="com.example.my_health.util.ButtonAddReminderClickListener" />
+            type="com.example.my_health.util.ButtonAddClickListener" />
         <variable
             name="listener_date"
             type="com.example.my_health.util.DateClickListener" />
@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:onClick="@{listener::onButtonAddReminder}"
+            android:onClick="@{listener::onButtonAdd}"
             android:text="@string/addReminder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

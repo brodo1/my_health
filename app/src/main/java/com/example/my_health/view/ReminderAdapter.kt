@@ -12,7 +12,7 @@ import com.example.my_health.databinding.ReminderItemLayoutBinding
 import com.example.my_health.model.Reminder
 import com.example.my_health.util.ReminderDeleteClickListener
 import com.example.my_health.util.ReminderEditClickListener
-import kotlinx.android.synthetic.main.reminder_item_layout.view.*
+//import kotlinx.android.synthetic.main.reminder_item_layout.view.*
 import java.util.ArrayList
 
 class ReminderAdapter(val reminderList:ArrayList<Reminder>,val adapterOnClick:(Any)->Unit): RecyclerView.Adapter<ReminderAdapter.ReminderListViewHolder>(),
@@ -36,32 +36,22 @@ ReminderDeleteClickListener,ReminderEditClickListener{
     }
 
     override fun onBindViewHolder(holder: ReminderListViewHolder, position: Int) {
-        holder.view.reminder=reminderList[position] //ovaj view je iz 21 retka ,to je binding
+        holder.view.reminder=reminderList[position]
         holder.view.editlistener=this
         holder.view.deletelistener=this
-    /*holder.itemView.uputnicaTitle.text=reminderList[position].title
-        holder.itemView.uputnicaOpis.text=reminderList[position].description
-        holder.itemView.imgDeleteReminder.setOnClickListener {
-            adapterOnClick(reminderList[position])
-        }
-        holder.itemView.imgUpdateReminder.setOnClickListener {
-            val action= ReminderListFragmentDirections.actionEditReminderFragment(reminderList[position].uuid)
-            Navigation.findNavController(it).navigate(action)
-        }
 
-         */
     }
 
     override fun getItemCount(): Int {
         return reminderList.size
     }
-//interfaceovi za ove dvije funkcije i item layoutu su koristene
+
     override fun onReminderEditClick(v: View) {
-        val action= ReminderListFragmentDirections.actionEditReminderFragment(v.tag.toString().toInt()) //tag Reminder.uuid se ubaci u xml item layout
+        val action= ReminderListFragmentDirections.actionEditReminderFragment(v.tag.toString().toInt())
         Navigation.findNavController(v).navigate(action)
     }
 
-    override fun onReminderDeleteClick(reminder: Reminder) { //u item layoutu
-        adapterOnClick(reminder) //onClick je gore definiran kao labmda funckija, u reminderListFragmentu je implementirana ta funckija kao doClick
+    override fun onReminderDeleteClick(reminder: Reminder) {
+        adapterOnClick(reminder)
     }
 }

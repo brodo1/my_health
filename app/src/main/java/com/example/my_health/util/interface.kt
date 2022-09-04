@@ -16,8 +16,12 @@ interface ReminderSaveChangesListener{
     fun onReminderSaveChanges(v:View,reminder:Reminder)
 }
 
-interface ButtonAddReminderClickListener{
-    fun onButtonAddReminder(v:View)
+interface DeleteAll{
+    fun onDeleteAllClick(v:View)
+}
+
+interface ButtonAddClickListener{
+    fun onButtonAdd(v:View)
 }
 
 interface DateClickListener{

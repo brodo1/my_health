@@ -13,6 +13,7 @@
         app:menu="@menu/bottom_menu"
         android:layout_alignParentBottom="true"
         />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/hostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

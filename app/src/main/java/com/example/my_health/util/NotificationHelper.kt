@@ -44,11 +44,11 @@ class NotificationHelper(val context: Context) {
             .setContentTitle(title)
             .setContentText(message)
             .setStyle(NotificationCompat.BigPictureStyle().bigPicture(icon).bigLargeIcon(null))
-            .setContentIntent(pendingIntent)// kad se stisne notifikacija, trigera se pending intent koji otvara mainactivity
+            .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
 
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID,notification) //trigera notifikaciju
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID,notification)
     }
 
 }

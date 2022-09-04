@@ -4,8 +4,8 @@ import androidx.room.*
 
 @Dao
 interface ReminderDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE) //ako se npr ubaci isti id onda se zamjeni
-    suspend fun insertAll(vararg reminder: Reminder) //vararg-> vise objekata reminder
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll( reminder: Reminder)
 
     @Query("SELECT * FROM reminder_table")
     suspend fun selectAllReminders():List<Reminder>
